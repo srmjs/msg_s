@@ -1,5 +1,6 @@
 const userDao = require('./dao')
 const { checkPasswordsAreEquals } = require('./aux/service-functions')
+const { fmtUser } = require('./aux/dao-functions')
 
 
 exports.createUser = async(data) => {

@@ -21,6 +21,7 @@ exports.setDataToCreateUser = (data) => {
 }
 
 exports.fmtUser = (user) => {
+    if (!user) return null
     const fmt = user.toJSON()
 
     fmt.id =fmt._id
