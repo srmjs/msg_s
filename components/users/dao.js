@@ -15,6 +15,12 @@ class UserDao {
     
         return fmtUser(user)
     }
+
+    async list() {
+        const users = await this.#collection.find({ 'config.public': true })
+
+        return users.map(user => fmtUser(user))
+    }
 }
 
 module.exports = new UserDao()
