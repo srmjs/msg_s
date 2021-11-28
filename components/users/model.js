@@ -8,9 +8,9 @@ const User = new Schema({
     alias: { type: String },
     password: { type: String },
     config: {
-        public: { type: Boolean, default: false },
-        delete_messages: { type: Boolean },
-        delete_messages_each: { type: Number },
+        public: { type: Boolean, default: true },
+        delete_messages: { type: Boolean, default: true },
+        delete_messages_each: { type: Number, default: 5 },
         default_secret_code: { type: String }
     }
 })

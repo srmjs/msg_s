@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken')
 const { get } = require('lodash')
 
+
 const config = require('../config')
 const { InvalidTokenError, MissingTokenError } = require('./errors')
 const { createValidator } = require('./json-schema')
 
-
+ 
 function getToken(req) {
     if(req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){
         return req.headers.authorization.split(' ')[1]
@@ -13,7 +14,12 @@ function getToken(req) {
     return null
 }
 
+exports.generateToken = (data => {
+    return jwt.sign(data, config.JWT.SECRET, )
+})
+
 exports.generator = (cb, params) => async(req, res, next) => {
+    console.log(req.query)
     try{
         const cbParams = params.map(e => get(req, e))
         res.json(await cb(...cbParams))

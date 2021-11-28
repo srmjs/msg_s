@@ -12,6 +12,7 @@ exports.createRoom = async (data) => {
 }
 
 exports.createMessage = async (roomId, data) => {
+    console.log(roomId)
     const updRoom = await roomDao.addMessage(roomId, data)
     if(!updRoom) throw new RoomNotFoundError('room not found')
     

@@ -15,13 +15,14 @@ function encrypt(data) {
 exports.setDataToCreateUser = (data) => {
     const settledData = {...data}
 
-    settledData.password = encrypt(settledData.password)
+    settledData.password = bcrypt.hashSync(settledData.password, bcrypt.genSaltSync(Number(config.SECRET_ROUNDS)))
     settledData.config.default_secret_code = encrypt(settledData.config.default_secret_code)
     return settledData
 }
 
 exports.fmtUser = (user) => {
     if (!user) return null
+    
     const fmt = user.toJSON()
 
     fmt.id =fmt._id
